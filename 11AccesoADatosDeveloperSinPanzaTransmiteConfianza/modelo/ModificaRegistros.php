@@ -41,13 +41,15 @@
         margin-bottom: 30px;
         color: #555;
     }
+
     .enviar {
-            margin-left: 13em;
-            padding: 1.5em 1em;
-            width: 15em;
-            background-color: rgb(3, 64, 111);
-            color: white;
-        }
+        margin-left: 13em;
+        padding: 1.5em 1em;
+        width: 15em;
+        background-color: rgb(3, 64, 111);
+        color: white;
+    }
+
     a {
         font-size: 16px;
         color: white;
@@ -97,15 +99,18 @@
     $alimentacion = isset($_POST['alimentacion']) ? $_POST['alimentacion'] : '';
     $quiero_perder = isset($_POST['quieroPerder']) ? $_POST['quieroPerder'] : '';
 
-    // Hacemos un control de errores
+    //Hacemos un control de errores
     if (($peso < 30 || $peso > 300) || $peso == "No proporcionado") {
-        echo "<p>Tienes que meter un valor entre 30 y 300 o no has proporcionado ningún valor</p>";
+        echo "<p>Tienes que meter un valor entre 30 y 300 o no has proporcionado ningun valor</p><a class= 'errorPorValidacion' href='../index'>VOLVER AL INICIO</a>";
+        exit;
     }
     if (($altura < 100 || $altura > 250) || $altura == "No proporcionado") {
-        echo "<p>Tienes que meter un valor entre 100 y 250 o no has proporcionado ningún valor</p>";
+        echo "<p>Tienes que meter un valor entre 100 y 250 o no has proporcionado ningun valor</p><a class= 'errorPorValidacion' href='../index'>VOLVER AL INICIO</a>";
+        exit;
     }
     if (!filter_var($email, FILTER_VALIDATE_EMAIL) || $email == "No proporcionado") {
-        echo "<p>Tienes que meter un email válido o no has proporcionado ningún valor</p>";
+        echo "<p>Tienes que meter un email valido o no has proporcionado ningun valor</p><a class= 'errorPorValidacion' href='../index'>VOLVER AL INICIO</a>";
+        exit;
     }
 
     // Comprobar si existe ya el email en la base de datos

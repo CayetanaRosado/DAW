@@ -123,8 +123,7 @@
         //Si no existe, mandamos un error de que ese usuario no existe en nuestra BBDD
         echo "<div class='error-message'>
         No existe un registro con ese email o fecha de nacimiento
-        <a href='../index'>VOLVER AL INICIO</a></div>
-      </div>";
+        <a href='../index'>VOLVER AL INICIO</a></div>";
 
 
   

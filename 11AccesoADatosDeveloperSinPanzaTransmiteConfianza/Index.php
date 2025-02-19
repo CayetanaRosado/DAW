@@ -64,7 +64,7 @@
             <a href="vista/BajaFormulario.php" class="btn">BAJA</a>
 
             <!-- Enlaza con la página ModificadoFormulario.php -->
-            <a href="vista/ModificadoFormulario.php" class="btn">MODIFICACIÓN</a>
+            <a href="vista/Modificar1Formulario.php" class="btn">MODIFICACIÓN</a>
 
             <!-- Enlaza con la página Informe.php -->
             <a href="vista/Informe.php" class="btn">INFORME</a>

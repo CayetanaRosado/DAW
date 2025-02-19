@@ -72,7 +72,6 @@
         }
     </style>
 </head>
-
 <body>
 
     <?php
@@ -89,18 +88,18 @@
     $resultado = mysqli_query($conexion, $sql);
 
 
-    // Verificar si hubo un error al ejecutar la consulta sql
-    if (!$resultado) {
-        die("Error en la consulta SQL: " . mysqli_connect_error());
-    }
+        // Verificar si hubo un error al ejecutar la consulta sql
+        if (!$resultado) {
+            die("Error en la consulta SQL: " . mysqli_connect_error());
+        }
 
-    // Si hay resultados en la consulta
-    if (mysqli_num_rows($resultado) > 0) {
+        // Si hay resultados en la consulta
+        if (mysqli_num_rows($resultado) > 0) {
 
-        // Mostrar encabezado para el informe de usuarios
-        echo "<h2>INFORME DE USUARIOS </h2>";
-          echo "<ol>";
-    
+            // Mostrar encabezado para el informe de usuarios
+            echo "<h2>INFORME DE USUARIOS </h2>";
+            echo "<ol>";
+        
         // Recorrer los resultados del usuario obtenido mientras haya usuarios
         while ($fila = mysqli_fetch_assoc($resultado)) {
 
@@ -118,9 +117,8 @@
             // Calcular IMC solo si los valores son válidos
             $imc = 0;
             if ($peso > 0 && $altura > 0) {
-                $imc = $peso / pow($altura / 100, 2); // Asegurando que la altura esté en metros
+                $imc = $peso / pow($altura / 100, 2); 
             }
-
             $imc = number_format($imc, 2);
 
             // Mostrar los datos del usuario en un bloque
@@ -174,27 +172,28 @@
         }
     }
 
-    // Mostrar los resultados
-    echo "<div class='estadisticas'>";
-    echo "<h3>ESTADÍSTICAS GENERALES</h3>";
-    echo "<ul>";
-    echo "<li><strong>Total de hombres:</strong> $total_hombres</li>";
-    echo "<li><strong>Total de mujeres:</strong> $total_mujeres</li>";
-    echo "<strong>de las cuales mujeres embarazadas hay:</strong> $total_mujeres_embarazadas";
-    echo "<li><strong>Promedio de edad de hombres:</strong> $promedio_edad_hombres años</li>";
-    echo "<li><strong>Promedio de edad de mujeres:</strong> $promedio_edad_mujeres años</li>";
-    echo "<li><strong>Promedio de IMC de hombres:</strong> $promedio_imc_hombres</li>";
-    echo "<li><strong>Promedio de IMC de mujeres:</strong> $promedio_imc_mujeres</li>";
-    echo "<li><strong>Total de usuarios:</strong> $total_usuarios</li>";
-    echo "</ul>";
-    echo "</div>";
-    
-    // Cerrar conexión
-    mysqli_close($conexion);
-    ?>
-      <div class="buttons-container">
-            <!-- Enlaza con la página index.php -->
-            <a href="../Index.php" class="btn">VOLVER</a>
+        // Mostrar los resultados
+        echo "<div class='estadisticas'>";
+        echo "<h3>ESTADÍSTICAS GENERALES</h3>";
+        echo "<ul>";
+        echo "<li><strong>Total de hombres:</strong> $total_hombres</li>";
+        echo "<li><strong>Total de mujeres:</strong> $total_mujeres</li>";
+        echo "<strong>de las cuales mujeres embarazadas hay:</strong> $total_mujeres_embarazadas";
+        echo "<li><strong>Promedio de edad de hombres:</strong> $promedio_edad_hombres años</li>";
+        echo "<li><strong>Promedio de edad de mujeres:</strong> $promedio_edad_mujeres años</li>";
+        echo "<li><strong>Promedio de IMC de hombres:</strong> $promedio_imc_hombres</li>";
+        echo "<li><strong>Promedio de IMC de mujeres:</strong> $promedio_imc_mujeres</li>";
+        echo "<li><strong>Total de usuarios:</strong> $total_usuarios</li>";
+        echo "</ul>";
+        echo "</div>";
+                    
+        // Cerrar conexión
+        mysqli_close($conexion);
+        ?>
+        
+    <div class="buttons-container">
+        <!-- Enlaza con la página index.php -->
+        <a href="../Index.php" class="btn">VOLVER</a>
     </div>
 </body>
 

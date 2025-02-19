@@ -55,6 +55,11 @@
     a:hover {
         background-color: rgb(26, 42, 77);
     }
+
+    .errorPorValidacion {
+        margin-left: 1em;
+    }
+
     .error-message {
         font-size: 2em;
         color: rgb(26, 42, 77);
@@ -66,7 +71,7 @@
 
 <body>
     <?php
-     // Incluir archivo de conexión para poder hacer la conexion a la base de datos
+    // Incluir archivo de conexión para poder hacer la conexion a la base de datos
     include "../controlador/Conexion.php";
 
     //Ahora establecemos la conexión mediante mysqli_connect
@@ -91,13 +96,16 @@
 
     //Hacemos un control de errores
     if (($peso < 30 || $peso > 300) || $peso == "No proporcionado") {
-        echo "<p>Tienes que meter un valor entre 30 y 300 o no has proporcionado ningun valor</p>";
+        echo "<p>Tienes que meter un valor entre 30 y 300 o no has proporcionado ningun valor</p><a class= 'errorPorValidacion' href='../index'>VOLVER AL INICIO</a>";
+        exit;
     }
     if (($altura < 100 || $altura > 250) || $altura == "No proporcionado") {
-        echo "<p>Tienes que meter un valor entre 100 y 250 o no has proporcionado ningun valor</p>";
+        echo "<p>Tienes que meter un valor entre 100 y 250 o no has proporcionado ningun valor</p><a class= 'errorPorValidacion' href='../index'>VOLVER AL INICIO</a>";
+        exit;
     }
     if (!filter_var($email, FILTER_VALIDATE_EMAIL) || $email == "No proporcionado") {
-        echo "<p>Tienes que meter un email valido o no has proporcionado ningun valor</p>";
+        echo "<p>Tienes que meter un email valido o no has proporcionado ningun valor</p><a class= 'errorPorValidacion' href='../index'>VOLVER AL INICIO</a>";
+        exit;
     }
 
     // Verificación de que los valores no sean 0 antes de calcular IMC
@@ -111,14 +119,14 @@
     //comprobar que no existe ya en la base de datos
     $sql_compruebo = "SELECT email From usuarios where email='$email'";
 
-     // Ejecuta la consulta SQL y almacena el resultado en $resultado_compruebo.
+    // Ejecuta la consulta SQL y almacena el resultado en $resultado_compruebo.
     $resultado_compruebo = mysqli_query($conexion, $sql_compruebo);
 
     // Verificar si hubo un error al ejecutar la consulta sql_compruebo
     if (!$resultado_compruebo) {
         die("Error en la consulta: " . mysqli_error($conexion));
     }
-    
+
     // Verificar si existe algun resultado de la consulta sql_compruebo
     if (mysqli_num_rows($resultado_compruebo) > 0) {
 
